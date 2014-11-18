@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Simple Masks - Demo</title>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../src/jquery.SimpleMask.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<style type="text/css">
+		body
+		{
+			font-family: arial,helvetica;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<form onsubmit="javascript: return false;">
+		<p>
+			<label for="frCep">CEP</label><br/>
+			<input type="text" name="frCep" id="frCep"/>
+		</p>
+		<p>
+			<label for="frTel">Telefone</label><br/>
+			<input type="text" name="frTel" id="frTel"/>
+		</p>
+	</form>
+
+	<pre>
+$(document).ready(function() {
+	
+	$('#frCep').simpleMask( { 'mask': '#####-###', 'nextInput': $('#frTelefone') } );
+	$('#frTel').simpleMask( { 'mask': ['####-####','#####-####'] } );
+
+});		
+	</pre>
+
+</body>
+</html>
