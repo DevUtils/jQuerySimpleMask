@@ -66,12 +66,33 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		}
 	};
 
+	$.fn.simpleMask.nextOnTabIndex = function(element)
+	{
+		var fields = $($('form')
+			.find('input, select, textarea')
+			.filter(':visible').filter(':enabled')
+			.toArray()
+			.sort(function(a, b) {
+			return ((a.tabIndex > 0) ? a.tabIndex : 1000) - ((b.tabIndex > 0) ? b.tabIndex : 1000);
+			}))
+		;
+		return fields.eq((fields.index(element) + 1) % fields.length);
+	};
+
 	$.fn.simpleMask._nextInput = function(p_arg)
 	{
 		var ids = (typeof(p_arg) == 'object') ? $(p_arg).attr('data-mask-ids') : p_arg;
 		if (objects[ids].options.nextInput !== null)
 		{
-			if (objects[ids].options.nextInput.length > 0)
+			if (objects[ids].options.nextInput === true)
+			{
+				var nextelement = $.fn.simpleMask.nextOnTabIndex(objects[ids].element);
+				if (nextelement.length > 0)
+				{
+					nextelement.focus();
+				}
+			}
+			else if (objects[ids].options.nextInput.length > 0)
 			{
 				objects[ids].options.nextInput.focus().select();
 			}
@@ -193,15 +214,47 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		comp.onComplete = p_options.onComplete;
 		comp.oldvalue   = $(p_elem).val();
 
+		var usemasks = [];
 		if (typeof p_options.mask == 'string')
 		{
-			comp.masks = [p_options.mask];
+			usemasks = [p_options.mask];
 		}
 		else
 		{
-			comp.masks = p_options.mask;
-			comp.masks.sort(function(a, b){ return a.length - b.length; });
+			usemasks = p_options.mask;
 		}
+
+		for (var k in usemasks)
+		{
+			switch(usemasks[k].toLowerCase())
+			{
+				case 'cpf':
+					usemasks[k] = '###.###.###-##';
+				break;
+				case 'cnpj':
+					usemasks[k] = '##.###.###/####-##';
+				break;
+				case 'cep':
+					usemasks[k] = '#####-###';
+				break;
+				case 'date':
+				case 'data':
+					usemasks[k] = '##/##/####';
+				break;
+				case 'telefone':
+				case 'tel':
+					usemasks[k] = '####-####';
+				break;
+				case 'telefone9':
+				case 'tel9':
+					usemasks[k] = '####-####';
+					usemasks.push('#####-####');
+				break;
+			}
+		}
+
+		comp.masks = usemasks;
+		comp.masks.sort(function(a, b){ return a.length - b.length; });
 		comp.maxlengthmask = comp.masks[comp.masks.length-1].length;
 
 		objects[ids] = (comp);
