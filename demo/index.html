@@ -23,13 +23,18 @@
 			<label for="frTel">Telefone</label><br/>
 			<input type="text" name="frTel" id="frTel"/>
 		</p>
+		<p>
+			<label for="frData">Data</label><br/>
+			<input type="text" name="frData" id="frData"/>
+		</p>
 	</form>
 
 	<pre>
 $(document).ready(function() {
 	
-	$('#frCep').simpleMask( { 'mask': '#####-###', 'nextInput': $('#frTelefone') } );
-	$('#frTel').simpleMask( { 'mask': ['####-####','#####-####'] } );
+	$('#frCep').simpleMask( { 'mask': '#####-###', 'nextInput': $('#frTel') } );
+	$('#frTel').simpleMask( { 'mask': ['####-####','#####-####'], 'nextInput': $('#frData') } );
+	$('#frData').simpleMask( { 'mask': '##/##/####' } );
 
 });		
 	</pre>

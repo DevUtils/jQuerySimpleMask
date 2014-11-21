@@ -165,7 +165,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			}
 			if (result != old_value)
 			{
-				if ( (result.length == p_mask.length) && ( result.length == caret_end ) )
+				if ( (result.length == p_mask.length) && ( result.length == caret_end ) && ( result.length == p_object.maxlengthmask )  )
 				{
 					$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
 				}
@@ -202,6 +202,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			comp.masks = p_options.mask;
 			comp.masks.sort(function(a, b){ return a.length - b.length; });
 		}
+		comp.maxlengthmask = comp.masks[comp.masks.length-1].length;
 
 		objects[ids] = (comp);
 		p_elem.attr('data-mask-ids', ids).addClass('input-masked');
