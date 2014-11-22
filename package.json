@@ -1,0 +1,25 @@
+{
+	"name": "jquerysimplemask",
+	"version": "1.0.0",
+	"description": "Simple and fast number input masks",
+	"main": "src/jquery.SimpleMask.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DevUtils/jQuerySimpleMask.git"
+	},
+	"keywords": [
+		"jquery",
+		"mask",
+		"masked",
+		"input"
+	],
+	"author": "MarceloXP <marceloxp@gmail.com>",
+	"license": "LGPL",
+	"bugs": {
+		"url": "https://github.com/DevUtils/jQuerySimpleMask/issues"
+	},
+	"dependencies": {
+		"jquery": "*"
+	},
+	"homepage": "https://github.com/DevUtils/jQuerySimpleMask"
+}
