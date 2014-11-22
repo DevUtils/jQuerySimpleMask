@@ -15,6 +15,18 @@ Simple and fast number input masks
 		<label for="frTel">Telefone</label><br/>
 		<input type="text" name="frTel" id="frTel"/>
 	</p>
+	<p>
+		<label for="frData">Data</label><br/>
+		<input type="text" name="frData" id="frData"/>
+	</p>
+	<p>
+		<label for="frCpf">CPF</label><br/>
+		<input type="text" name="frCpf" id="frCpf"/>
+	</p>
+	<p>
+		<label for="frCnpj">CNPJ</label><br/>
+		<input type="text" name="frCnpj" id="frCnpj"/>
+	</p>
 </form>
 ```
 
