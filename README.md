@@ -18,11 +18,29 @@ Simple and fast number input masks
 </form>
 ```
 
+
+## Helper mode
 ```js
 $(document).ready(function() {
 	
-	$('#frCep').simpleMask( { 'mask': '#####-###', 'nextInput': $('#frTelefone') } );
-	$('#frTel').simpleMask( { 'mask': ['####-####','#####-####'] } );
+	$('#frCep' ).simpleMask( { 'mask': 'cep' , 'nextInput': true } );
+	$('#frTel' ).simpleMask( { 'mask': 'tel9', 'nextInput': true } );
+	$('#frData').simpleMask( { 'mask': 'data', 'nextInput': true } );
+	$('#frCpf' ).simpleMask( { 'mask': 'cpf' , 'nextInput': true } );
+	$('#frCnpj').simpleMask( { 'mask': 'cnpj' } );
+
+});
+```
+
+## Custom mode
+```js
+$(document).ready(function() {
+	
+	$('#frCep' ).simpleMask( { 'mask': '#####-###', 'nextInput': $('#frTel') } );
+	$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####'], 'nextInput': $('#frData') } );
+	$('#frData').simpleMask( { 'mask': '##/##/####', 'nextInput': $('#frCpf') } );
+	$('#frCpf' ).simpleMask( { 'mask': '###.###.###-##', 'nextInput': $('#frCnpj') } );
+	$('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
 
 });
 ```
