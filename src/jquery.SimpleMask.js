@@ -164,6 +164,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 
 		if (vrTemp.length > 0)
 		{
+			vrTemp = vrTemp.trim();
 			var result = p_mask;
 			var l = vrTemp.length;
 			for (var k = 0; k < l; k++)
@@ -180,6 +181,14 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			{
 				result = result.substr(0, pos-1);
 			}
+			
+			var lastchar = result.substr(result.length - 1, 1);
+			while( (result.length > 0) && ( $.fn.simpleMask.isNumber(lastchar) === false ) )
+			{
+				result = result.substr(0, result.length - 1);
+				lastchar = result.substr(result.length - 1, 1);
+			}
+
 			if (result != cur_value)
 			{
 				$(p_element).val(result);
@@ -249,6 +258,11 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 				case 'tel9':
 					usemasks[k] = '####-####';
 					usemasks.push('#####-####');
+				break;
+				case 'ddd-telefone9':
+				case 'ddd-tel9':
+					usemasks[k] = '(##) ####-####';
+					usemasks.push('(##) #####-####');
 				break;
 			}
 		}

@@ -1,9 +1,10 @@
 $(document).ready(function() {
 	
-	$('#frCep' ).simpleMask( { 'mask': '#####-###', 'nextInput': $('#frTel') } );
-	$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####'], 'nextInput': $('#frData') } );
-	$('#frData').simpleMask( { 'mask': '##/##/####', 'nextInput': true } );
-	$('#frCpf' ).simpleMask( { 'mask': 'cpf' , 'nextInput': true } );
+	$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
+	$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
+	$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
+	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
+	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
 	$('#frCnpj').simpleMask( { 'mask': 'cnpj' } );
 
 	$('#frCep').focus();
