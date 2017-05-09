@@ -115,12 +115,12 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 				var nextelement = $.fn.simpleMask.nextOnTabIndex(objects[ids].element);
 				if (nextelement.length > 0)
 				{
-					nextelement.focus();
+					nextelement.select().focus();
 				}
 			}
 			else if (objects[ids].options.nextInput.length > 0)
 			{
-				objects[ids].options.nextInput.focus().select();
+				objects[ids].options.nextInput.select().focus();
 			}
 		}
 	};
