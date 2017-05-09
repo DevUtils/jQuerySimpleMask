@@ -4,11 +4,37 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 
 	var defaults =
 	{
-		mask: '',
-		nextInput: null,
+		mask       : '',
+		nextInput  : null,
 		onComplete : null
 	};
 	var objects = [];
+
+	// var getClipboardData = function(e)
+	// {
+	// 	if (window.clipboardData !== undefined)
+	// 	{
+	// 		return window.clipboardData.getData('text');
+	// 	}
+	// 	else
+	// 	{
+	// 		var fke =
+	// 		{
+	// 			'originalEvent' :
+	// 			{
+	// 				'clipboardData' : 
+	// 				{
+	// 					'getData': function()
+	// 					{
+	// 						return '';
+	// 					}
+	// 				}
+	// 			}
+	// 		};
+	// 		var event = (typeof e !== 'object') ? fke : e || fke;
+	// 		return event.originalEvent.clipboardData.getData('text')
+	// 	}
+	// };
 
 	var methods =
 	{
@@ -195,7 +221,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			}
 			if (result != old_value)
 			{
-				if ( (result.length == p_mask.length) && ( result.length == caret_end ) && ( result.length == p_object.maxlengthmask )  )
+				if ( (result.length == p_mask.length) && ( result.length <= caret_end ) && ( result.length == p_object.maxlengthmask )  )
 				{
 					$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
 				}
@@ -281,6 +307,17 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			function()
 			{
 				$.fn.simpleMask.applyMask(comp);
+			}
+		);
+
+		$(document).on
+		(
+			'paste',
+			'input[data-mask-ids="' + ids + '"]',
+			function(e)
+			{
+				var $element = $(this);
+				setTimeout(function() { $element.keyup(); }, 100 );
 			}
 		);
 		

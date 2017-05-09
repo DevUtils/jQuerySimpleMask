@@ -5,7 +5,18 @@ $(document).ready(function() {
 	$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
 	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
 	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
-	$('#frCnpj').simpleMask( { 'mask': 'cnpj' } );
+	$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
+	
+	$('#frCallback').simpleMask
+	(
+		{
+			'mask': '#####',
+			'onComplete': function(element)
+			{
+				console.log('onComplete', element);
+			}
+		}
+	);
 
 	$('#frCep').focus();
 
