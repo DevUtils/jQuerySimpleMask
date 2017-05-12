@@ -43,6 +43,10 @@
 			<label for="frCallback">With Callback</label><br/>
 			<input type="text" name="frCallback" id="frCallback"/>
 		</p>
+		<p>
+			<label for="frNone">Without mask</label><br/>
+			<input type="text" name="frNone" id="frNone"/>
+		</p>
 	</form>
 
 	<h2>Helper mode</h2>
@@ -70,8 +74,9 @@
 	$('#frCallback').simpleMask
 	(
 		{
-			'mask': '#####',
-			'onComplete': function(element)
+			'mask'       : '#####',
+			'nextInput'  : true,
+			'onComplete' : function(element)
 			{
 				console.log('onComplete', element);
 			}

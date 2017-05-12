@@ -6,12 +6,13 @@ $(document).ready(function() {
 	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
 	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
 	$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
-	
+
 	$('#frCallback').simpleMask
 	(
 		{
-			'mask': '#####',
-			'onComplete': function(element)
+			'mask'       : '#####',
+			'nextInput'  : true,
+			'onComplete' : function(element)
 			{
 				console.log('onComplete', element);
 			}

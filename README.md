@@ -63,8 +63,9 @@ $(document).ready(function() {
 	$('#frCallback').simpleMask
 	(
 		{
-			'mask': '#####',
-			'onComplete': function(element)
+			'mask'       : '#####',
+			'nextInput'  : true,
+			'onComplete' : function(element)
 			{
 				console.log('onComplete', element);
 			}

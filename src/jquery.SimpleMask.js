@@ -94,15 +94,28 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 
 	$.fn.simpleMask.nextOnTabIndex = function(element)
 	{
-		var fields = $($('form')
-			.find('input, select, textarea')
-			.filter(':visible').filter(':enabled')
-			.toArray()
-			.sort(function(a, b) {
-			return ((a.tabIndex > 0) ? a.tabIndex : 1000) - ((b.tabIndex > 0) ? b.tabIndex : 1000);
-			}))
-		;
-		return fields.eq((fields.index(element) + 1) % fields.length);
+		var $element = $(element);
+		var get_next = false;
+		var result = null;
+		$element.closest('form').find('input,select').each
+		(
+			function(index)
+			{
+				var $current = $(this);
+				if (get_next)
+				{
+					result = $current;
+					 return false;
+				}
+
+				var check = ($current[0] == $element[0]);
+				if (check)
+				{
+					get_next = true;
+				}
+			}
+		);
+		return result;
 	};
 
 	$.fn.simpleMask._nextInput = function(p_arg)
@@ -162,7 +175,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		return p_string.replace(/\D/g, '').length;
 	};
 
-	$.fn.simpleMask.applyMask = function(p_object)
+	$.fn.simpleMask.applyMask = function(p_object, p_key_code)
 	{
 		var p_element = p_object.element;
 		var html_element = $(p_element)[0];
@@ -223,7 +236,17 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			{
 				if ( (result.length == p_mask.length) && ( result.length <= caret_end ) && ( result.length == p_object.maxlengthmask )  )
 				{
-					$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
+					if (p_key_code !== undefined)
+					{
+						if ( (p_key_code >= 96) && (p_key_code <= 105) )
+						{
+							$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
+						}
+					}
+					// else
+					// {
+					// 	$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
+					// }
 				}
 			}
 		}
@@ -304,9 +327,9 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		(
 			'keyup.simpleMask change.simpleMask',
 			'input[data-mask-ids="' + ids + '"]',
-			function()
+			function(e)
 			{
-				$.fn.simpleMask.applyMask(comp);
+				$.fn.simpleMask.applyMask(comp, e.keyCode);
 			}
 		);
 

@@ -1,25 +1,34 @@
 {
-	"name": "jquerysimplemask",
-	"version": "1.0.0",
-	"description": "Simple and fast number input masks",
-	"main": "src/jquery.SimpleMask.js",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/DevUtils/jQuerySimpleMask.git"
-	},
-	"keywords": [
-		"jquery",
-		"mask",
-		"masked",
-		"input"
-	],
-	"author": "MarceloXP <marceloxp@gmail.com>",
-	"license": "LGPL",
-	"bugs": {
-		"url": "https://github.com/DevUtils/jQuerySimpleMask/issues"
-	},
-	"dependencies": {
-		"jquery": "*"
-	},
-	"homepage": "https://github.com/DevUtils/jQuerySimpleMask"
+  "name": "jquerysimplemask",
+  "version": "1.0.0",
+  "description": "Simple and fast number input masks",
+  "main": "src/jquery.SimpleMask.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevUtils/jQuerySimpleMask.git"
+  },
+  "keywords": [
+    "jquery",
+    "mask",
+    "masked",
+    "input"
+  ],
+  "author": "MarceloXP <marceloxp@gmail.com>",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/DevUtils/jQuerySimpleMask/issues"
+  },
+  "dependencies": {
+    "gulp-beautify": "^2.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-edit": "0.0.1",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.1.2",
+    "jquery": "*"
+  },
+  "homepage": "https://github.com/DevUtils/jQuerySimpleMask",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
