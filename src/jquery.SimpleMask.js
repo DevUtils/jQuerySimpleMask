@@ -96,7 +96,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 	{
 		var $element = $(element);
 		var get_next = false;
-		var result = null;
+		var result = [];
 		$element.closest('form').find('input,select').each
 		(
 			function(index)
@@ -175,7 +175,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		return p_string.replace(/\D/g, '').length;
 	};
 
-	$.fn.simpleMask.applyMask = function(p_object, p_key_code)
+	$.fn.simpleMask.applyMask = function(p_object, p_key)
 	{
 		var p_element = p_object.element;
 		var html_element = $(p_element)[0];
@@ -236,17 +236,10 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			{
 				if ( (result.length == p_mask.length) && ( result.length <= caret_end ) && ( result.length == p_object.maxlengthmask )  )
 				{
-					if (p_key_code !== undefined)
+					if (Number.isInteger(p_key))
 					{
-						if ( (p_key_code >= 96) && (p_key_code <= 105) )
-						{
-							$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
-						}
+						$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
 					}
-					// else
-					// {
-					// 	$.fn.simpleMask._onComplete(p_element.attr('data-mask-ids'));
-					// }
 				}
 			}
 		}
@@ -329,7 +322,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			'input[data-mask-ids="' + ids + '"]',
 			function(e)
 			{
-				$.fn.simpleMask.applyMask(comp, e.keyCode);
+				$.fn.simpleMask.applyMask(comp, parseInt(e.key));
 			}
 		);
 
