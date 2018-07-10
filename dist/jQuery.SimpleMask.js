@@ -1,4 +1,4 @@
-// Last modified: 2017-05-12 14:33:39
+// Last modified: 2018-07-10 13:50:06
 String.prototype.simpleMaskStringCount = function(s1) { return (this.length - this.replace(new RegExp(s1,"g"), '').length) / s1.length; };
 
 (function($){
@@ -10,32 +10,6 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		onComplete : null
 	};
 	var objects = [];
-
-	// var getClipboardData = function(e)
-	// {
-	// 	if (window.clipboardData !== undefined)
-	// 	{
-	// 		return window.clipboardData.getData('text');
-	// 	}
-	// 	else
-	// 	{
-	// 		var fke =
-	// 		{
-	// 			'originalEvent' :
-	// 			{
-	// 				'clipboardData' : 
-	// 				{
-	// 					'getData': function()
-	// 					{
-	// 						return '';
-	// 					}
-	// 				}
-	// 			}
-	// 		};
-	// 		var event = (typeof e !== 'object') ? fke : e || fke;
-	// 		return event.originalEvent.clipboardData.getData('text')
-	// 	}
-	// };
 
 	var methods =
 	{

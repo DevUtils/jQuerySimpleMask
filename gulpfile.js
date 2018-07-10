@@ -1,22 +1,21 @@
-var gulp        = require('gulp');
-var concat      = require('gulp-concat');
-var uglify      = require('gulp-uglify');
-var beautify    = require('gulp-beautify');
-var edit        = require('gulp-edit');
-// var gutil       = require('gulp-util');
-var replace     = require('gulp-replace');
+var gulp     = require('gulp');
+var concat   = require('gulp-concat');
+var uglify   = require('gulp-uglify');
+var beautify = require('gulp-beautify');
+var edit     = require('gulp-edit');
+var replace  = require('gulp-replace');
+var date     = require('date-and-time');
 
-gulp.task // build
+var date_now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+
+gulp.task
 (
-	'build',
+	'default',
 	function()
 	{
-		var dist = 'dist';
-		var beautify_options = { 'indent_with_tabs': true, 'brace-style': 'expand' };
-
 		gulp
 			.src('src/*.js')
-			.pipe(beautify(beautify_options))
+			.pipe(beautify({'indent_with_tabs': true, 'brace-style': 'expand'}))
 			.pipe(uglify())
 			.pipe(concat('jQuery.SimpleMask.min.js'))
 			.pipe
@@ -25,12 +24,12 @@ gulp.task // build
 				(
 					function(src, cb)
 					{
-						src = '// Last modified: ' + new Date().toLocaleString() + '\n' + src;
+						src = '// Last modified: ' + date_now + '\n' + src;
 						cb(null, src);
 					}
 				)
 			)
-			.pipe(gulp.dest(dist))
+			.pipe(gulp.dest('dist'))
 		;
 
 		gulp
@@ -42,12 +41,12 @@ gulp.task // build
 				(
 					function(src, cb)
 					{
-						src = '// Last modified: ' + new Date().toLocaleString() + '\n' + src;
+						src = '// Last modified: ' + date_now + '\n' + src;
 						cb(null, src);
 					}
 				)
 			)
-			.pipe(gulp.dest(dist))
+			.pipe(gulp.dest('dist'))
 		;
 	}
 );

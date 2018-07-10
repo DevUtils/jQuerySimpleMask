@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jQuery Simple Masks - Demo</title>
+	<title>jQuery Simple Mask - Demo</title>
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="../src/jquery.SimpleMask.js"></script>
+	<script type="text/javascript" src="../dist/jQuery.SimpleMask.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<style type="text/css">
 		body
@@ -14,38 +14,40 @@
 	</style>
 </head>
 <body>
+	<h1>jQuery Simple Mask - Demo</h1>
+	<hr/>
 	<form onsubmit="javascript: return false;">
 		<p>
 			<label for="frCep">CEP</label><br/>
-			<input type="text" name="frCep" id="frCep"/>
+			<input autocomplete="off" type="text" name="frCep" id="frCep"/>
 		</p>
 		<p>
 			<label for="frDtel">(DDD) Telefone</label><br/>
-			<input type="text" name="frDtel" id="frDtel"/>
+			<input autocomplete="off" type="text" name="frDtel" id="frDtel"/>
 		</p>
 		<p>
 			<label for="frTel">Telefone</label><br/>
-			<input type="text" name="frTel" id="frTel"/>
+			<input autocomplete="off" type="text" name="frTel" id="frTel"/>
 		</p>
 		<p>
 			<label for="frData">Data</label><br/>
-			<input type="text" name="frData" id="frData"/>
+			<input autocomplete="off" type="text" name="frData" id="frData"/>
 		</p>
 		<p>
 			<label for="frCpf">CPF</label><br/>
-			<input type="text" name="frCpf" id="frCpf"/>
+			<input autocomplete="off" type="text" name="frCpf" id="frCpf"/>
 		</p>
 		<p>
 			<label for="frCnpj">CNPJ</label><br/>
-			<input type="text" name="frCnpj" id="frCnpj"/>
+			<input autocomplete="off" type="text" name="frCnpj" id="frCnpj"/>
 		</p>
 		<p>
 			<label for="frCallback">With Callback</label><br/>
-			<input type="text" name="frCallback" id="frCallback"/>
+			<input autocomplete="off" type="text" name="frCallback" id="frCallback"/>
 		</p>
 		<p>
 			<label for="frNone">Without mask</label><br/>
-			<input type="text" name="frNone" id="frNone"/>
+			<input autocomplete="off" type="text" name="frNone" id="frNone"/>
 		</p>
 	</form>
 

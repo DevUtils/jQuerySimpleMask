@@ -10,32 +10,6 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 	};
 	var objects = [];
 
-	// var getClipboardData = function(e)
-	// {
-	// 	if (window.clipboardData !== undefined)
-	// 	{
-	// 		return window.clipboardData.getData('text');
-	// 	}
-	// 	else
-	// 	{
-	// 		var fke =
-	// 		{
-	// 			'originalEvent' :
-	// 			{
-	// 				'clipboardData' : 
-	// 				{
-	// 					'getData': function()
-	// 					{
-	// 						return '';
-	// 					}
-	// 				}
-	// 			}
-	// 		};
-	// 		var event = (typeof e !== 'object') ? fke : e || fke;
-	// 		return event.originalEvent.clipboardData.getData('text')
-	// 	}
-	// };
-
 	var methods =
 	{
 		init : function(options)
