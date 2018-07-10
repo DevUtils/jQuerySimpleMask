@@ -1,11 +1,11 @@
 {
   "name": "jquerysimplemask",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Simple and fast number input masks",
-  "main": "src/jquery.SimpleMask.js",
+  "main": "dist/jquery.SimpleMask.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DevUtils/jQuerySimpleMask.git"
+    "url": "https://github.com/DevUtils/jQuerySimpleMask.git",
+    "type": "git"
   },
   "keywords": [
     "jquery",
@@ -19,15 +19,21 @@
     "url": "https://github.com/DevUtils/jQuerySimpleMask/issues"
   },
   "dependencies": {
+    "jquery": "*"
+  },
+  "files": [
+    "dist/jquery.SimpleMask.min.js"
+  ],
+  "homepage": "https://github.com/DevUtils/jQuerySimpleMask",
+  "devDependencies": {
+    "date-and-time": "^0.6.2",
+    "gulp": "^3.9.1",
     "gulp-beautify": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-edit": "0.0.1",
     "gulp-replace": "^0.5.4",
-    "gulp-uglify": "^2.1.2",
-    "jquery": "*"
+    "gulp-uglify": "^2.1.2"
   },
-  "homepage": "https://github.com/DevUtils/jQuerySimpleMask",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
