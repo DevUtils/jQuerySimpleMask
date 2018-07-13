@@ -3,10 +3,9 @@
 <head>
 	<title>jQuery Simple Mask - Demo</title>
 	<link rel="icon" href="favicon.png">
-	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="node_modules/parse-markdown-js/dist/parse-markdown-pure.js"></script>
+	<link rel="stylesheet" href="css/vendor.min.css"/>
+	<script type="text/javascript" src="js/vendor.min.js"></script>
+	<script type="text/javascript" src="js/parse-markdown-pure.js"></script>
 	<script type="text/javascript" src="../dist/jQuery.SimpleMask.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<style type="text/css">
@@ -79,16 +78,16 @@
 ```
 	$(document).ready
 	(
-	    function()
-	    {
-        	$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
-        	$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
-        	$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
-        	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
-        	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
-        	$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
-        }
-    );
+		function()
+		{
+			$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
+			$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
+			$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
+			$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
+			$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
+			$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
+		}
+	);
 ```
 
 ## Custom mode

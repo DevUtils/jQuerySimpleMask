@@ -1,4 +1,4 @@
-/* Version: 1.0.3 - Last modified: 2018-07-12 11:44:45 */
+/* Version: 1.0.3 - Last modified: 2018-07-13 16:22:39 */
 String.prototype.simpleMaskStringCount = function(s1) { return (this.length - this.replace(new RegExp(s1,"g"), '').length) / s1.length; };
 
 (function($){

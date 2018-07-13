@@ -19,7 +19,7 @@
     "url": "https://github.com/DevUtils/jQuerySimpleMask/issues"
   },
   "files": [
-    "dist/jquery.SimpleMask.min.js"
+    "dist/jQuery.SimpleMask.min.js"
   ],
   "homepage": "https://github.com/DevUtils/jQuerySimpleMask",
   "devDependencies": {
@@ -36,10 +36,6 @@
     "sprintf-js": "^1.1.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "copy:jquery": "copyfiles node_modules/jquery/dist/jquery.min.js demo",
-    "copy:bootstrap:css": "copyfiles node_modules/bootstrap/dist/css/bootstrap.min.css demo",
-    "copy:bootstrap:js": "copyfiles node_modules/bootstrap/dist/js/bootstrap.min.js demo",
-    "postinstall": "run-s copy:**"
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

@@ -38,3 +38,38 @@ gulp.task
 		;
 	}
 );
+
+gulp.task
+(
+	'vendor',
+	() =>
+	{
+		const version = getPackageVersion();
+
+		gulp
+			.src
+			(
+				[
+					'node_modules/jquery/dist/jquery.min.js',
+					'node_modules/bootstrap/dist/js/bootstrap.min.js'
+				]
+			)
+			.pipe(uglify())
+			.pipe(concat('vendor.min.js'))
+			.pipe(edit(function(src, cb) { src = vsprintf('/* Version: %s - Last modified: %s */\n', [version, date_now]) + src; cb(null, src); }))
+			.pipe(gulp.dest('demo/js'))
+		;
+
+		gulp
+			.src
+			(
+				[
+					'node_modules/bootstrap/dist/css/bootstrap.min.css'
+				]
+			)
+			.pipe(concat('vendor.min.css'))
+			.pipe(edit(function(src, cb) { src = vsprintf('/* Version: %s - Last modified: %s */\n', [version, date_now]) + src; cb(null, src); }))
+			.pipe(gulp.dest('demo/css'))
+		;
+	}
+);
