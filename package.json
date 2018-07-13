@@ -1,8 +1,8 @@
 {
   "name": "jquerysimplemask",
   "version": "1.0.3",
-  "description": "Simple and fast number input masks",
-  "main": "dist/jquery.SimpleMask.js",
+  "description": "Simple and fast number input masks.",
+  "main": "dist/jQuery.SimpleMask.min.js",
   "repository": {
     "url": "https://github.com/DevUtils/jQuerySimpleMask.git",
     "type": "git"
@@ -18,23 +18,28 @@
   "bugs": {
     "url": "https://github.com/DevUtils/jQuerySimpleMask/issues"
   },
-  "dependencies": {
-    "jquery": "*"
-  },
   "files": [
     "dist/jquery.SimpleMask.min.js"
   ],
   "homepage": "https://github.com/DevUtils/jQuerySimpleMask",
   "devDependencies": {
+    "bootstrap": "^4.1.1",
+    "copyfiles": "^2.0.0",
     "date-and-time": "^0.6.2",
     "gulp": "^3.9.1",
-    "gulp-beautify": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-edit": "0.0.1",
-    "gulp-replace": "^0.5.4",
-    "gulp-uglify": "^2.1.2"
+    "gulp-uglify": "^2.1.2",
+    "jquery": "*",
+    "npm-run-all": "^4.1.3",
+    "parse-markdown-js": "^1.3.6",
+    "sprintf-js": "^1.1.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy:jquery": "copyfiles node_modules/jquery/dist/jquery.min.js demo",
+    "copy:bootstrap:css": "copyfiles node_modules/bootstrap/dist/css/bootstrap.min.css demo",
+    "copy:bootstrap:js": "copyfiles node_modules/bootstrap/dist/js/bootstrap.min.js demo",
+    "postinstall": "run-s copy:**"
   }
 }

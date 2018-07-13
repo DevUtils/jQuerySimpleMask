@@ -2,7 +2,11 @@
 <html>
 <head>
 	<title>jQuery Simple Mask - Demo</title>
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="node_modules/parse-markdown-js/dist/parse-markdown-pure.js"></script>
 	<script type="text/javascript" src="../dist/jQuery.SimpleMask.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<style type="text/css">
@@ -14,78 +18,108 @@
 	</style>
 </head>
 <body>
-	<h1>jQuery Simple Mask - Demo</h1>
-	<hr/>
-	<form onsubmit="javascript: return false;">
-		<p>
-			<label for="frCep">CEP</label><br/>
-			<input autocomplete="off" type="text" name="frCep" id="frCep"/>
-		</p>
-		<p>
-			<label for="frDtel">(DDD) Telefone</label><br/>
-			<input autocomplete="off" type="text" name="frDtel" id="frDtel"/>
-		</p>
-		<p>
-			<label for="frTel">Telefone</label><br/>
-			<input autocomplete="off" type="text" name="frTel" id="frTel"/>
-		</p>
-		<p>
-			<label for="frData">Data</label><br/>
-			<input autocomplete="off" type="text" name="frData" id="frData"/>
-		</p>
-		<p>
-			<label for="frCpf">CPF</label><br/>
-			<input autocomplete="off" type="text" name="frCpf" id="frCpf"/>
-		</p>
-		<p>
-			<label for="frCnpj">CNPJ</label><br/>
-			<input autocomplete="off" type="text" name="frCnpj" id="frCnpj"/>
-		</p>
-		<p>
-			<label for="frCallback">With Callback</label><br/>
-			<input autocomplete="off" type="text" name="frCallback" id="frCallback"/>
-		</p>
-		<p>
-			<label for="frNone">Without mask</label><br/>
-			<input autocomplete="off" type="text" name="frNone" id="frNone"/>
-		</p>
-	</form>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<h1>jQuery Simple Mask - Demo</h1>
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<form onsubmit="javascript: return false;">
+					<div class="form-group">
+						<label for="frCep">CEP</label>
+						<input type="text" class="form-control" name="frCep" id="frCep">
+					</div>
+					<div class="form-group">
+						<label for="frDtel">(DDD) Telefone</label>
+						<input type="text" class="form-control" name="frDtel" id="frDtel">
+					</div>
+					<div class="form-group">
+						<label for="frTel">Telefone</label>
+						<input type="text" class="form-control" name="frTel" id="frTel">
+					</div>
+					<div class="form-group">
+						<label for="frData">Data</label>
+						<input type="text" class="form-control" name="frData" id="frData">
+					</div>
+					<div class="form-group">
+						<label for="frCpf">CPF</label>
+						<input type="text" class="form-control" name="frCpf" id="frCpf">
+					</div>
+					<div class="form-group">
+						<label for="frCnpj">CNPJ</label>
+						<input type="text" class="form-control" name="frCnpj" id="frCnpj">
+					</div>
+					<div class="form-group">
+						<label for="frCallback">With Callback</label>
+						<input type="text" class="form-control" name="frCallback" id="frCallback">
+					</div>
+					<div class="form-group">
+						<label for="frNone">Without mask</label>
+						<input type="text" class="form-control" name="frNone" id="frNone">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-	<h2>Helper mode</h2>
-	<pre>$(document).ready(function() {
-	
-	$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
-	$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
-	$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
-	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
-	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
-	$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div id="readme-html"></div>
+			</div>
+		</div>
+	</div>
 
-});</pre>
+	<div id="readme" style="display: none;">
+## Helper mode
 
-	<h2>Custom mode</h2>
-	<pre>$(document).ready(function() {
-	
-	$('#frCep' ).simpleMask( { 'mask': '#####-###'                          , 'nextInput': $('#frDtel') } );
-	$('#frDtel').simpleMask( { 'mask': ['(##) ####-####', '(##) #####-####'], 'nextInput': $('#frTel' ) } );
-	$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####']          , 'nextInput': $('#frData') } );
-	$('#frData').simpleMask( { 'mask': '##/##/####'                         , 'nextInput': $('#frCpf' ) } );
-	$('#frCpf' ).simpleMask( { 'mask': '###.###.###-##'                     , 'nextInput': $('#frCnpj') } );
-	$('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
-
-	$('#frCallback').simpleMask
+```
+	$(document).ready
 	(
-		{
-			'mask'       : '#####',
-			'nextInput'  : true,
-			'onComplete' : function(element)
-			{
-				console.log('onComplete', element);
-			}
-		}
-	);
+	    function()
+	    {
+        	$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
+        	$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
+        	$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
+        	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
+        	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
+        	$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
+        }
+    );
+```
 
-});</pre>
+## Custom mode
+
+```
+$(document).ready
+(
+	function()
+	{
+		$('#frCep' ).simpleMask( { 'mask': '#####-###'                          , 'nextInput': $('#frDtel') } );
+		$('#frDtel').simpleMask( { 'mask': ['(##) ####-####', '(##) #####-####'], 'nextInput': $('#frTel' ) } );
+		$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####']          , 'nextInput': $('#frData') } );
+		$('#frData').simpleMask( { 'mask': '##/##/####'                         , 'nextInput': $('#frCpf' ) } );
+		$('#frCpf' ).simpleMask( { 'mask': '###.###.###-##'                     , 'nextInput': $('#frCnpj') } );
+		$('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
+
+		$('#frCallback').simpleMask
+		(
+			{
+				'mask'       : '#####',
+				'nextInput'  : true,
+				'onComplete' : function(element)
+				{
+					console.log('onComplete', element);
+				}
+			}
+		);
+	}
+);
+```
+	</div>
 
 </body>
 </html>
