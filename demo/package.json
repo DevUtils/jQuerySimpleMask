@@ -1,0 +1,13 @@
+{
+  "name": "jquerysimplemaskdemo",
+  "version": "1.0.0",
+  "description": "jQuery Simple Mask - Demo",
+  "main": "index.html",
+  "author": "MarceloXP",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.2",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {}
+}

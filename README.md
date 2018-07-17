@@ -38,38 +38,45 @@ Simple and fast number input masks
 </form>
 ```
 
-
 ## Helper mode
 ```js
-$(document).ready(function() {
-	$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': false } );
-	$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': false } );
-	$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': false } );
-	$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': false } );
-	$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': false } );
-	$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': false } );
-});
+$(document).ready
+(
+	function()
+	{
+		$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': false } );
+		$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': false } );
+		$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': false } );
+		$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': false } );
+		$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': false } );
+		$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': false } );
+	}
+);
 ```
 
 ## Custom mode
 ```js
-$(document).ready(function() {
-	$('#frCep' ).simpleMask( { 'mask': '#####-###'                          , 'nextInput': $('#frDtel') } );
-	$('#frDtel').simpleMask( { 'mask': ['(##) ####-####', '(##) #####-####'], 'nextInput': $('#frTel' ) } );
-	$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####']          , 'nextInput': $('#frData') } );
-	$('#frData').simpleMask( { 'mask': '##/##/####'                         , 'nextInput': $('#frCpf' ) } );
-	$('#frCpf' ).simpleMask( { 'mask': '###.###.###-##'                     , 'nextInput': $('#frCnpj') } );
-	$('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
-	$('#frCallback').simpleMask
-	(
-		{
-			'mask'       : '#####',
-			'nextInput'  : true,
-			'onComplete' : function(element)
+$(document).ready
+(
+	function()
+	{
+		$('#frCep' ).simpleMask( { 'mask': '#####-###'                          , 'nextInput': $('#frDtel') } );
+		$('#frDtel').simpleMask( { 'mask': ['(##) ####-####', '(##) #####-####'], 'nextInput': $('#frTel' ) } );
+		$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####']          , 'nextInput': $('#frData') } );
+		$('#frData').simpleMask( { 'mask': '##/##/####'                         , 'nextInput': $('#frCpf' ) } );
+		$('#frCpf' ).simpleMask( { 'mask': '###.###.###-##'                     , 'nextInput': $('#frCnpj') } );
+		$('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
+		$('#frCallback').simpleMask
+		(
 			{
-				console.log('onComplete', element);
+				'mask'       : '#####',
+				'nextInput'  : true,
+				'onComplete' : function(element)
+				{
+					console.log('onComplete', element);
+				}
 			}
-		}
-	);
-});
+		);
+	}
+);
 ```

@@ -5,24 +5,31 @@ const edit     = require('gulp-edit');
 const date     = require('date-and-time');
 const sprintf  = require('sprintf-js').sprintf;
 const vsprintf = require('sprintf-js').vsprintf;
+const merge    = require('merge-stream');
+const yarn     = require('gulp-yarn');
 const fs       = require('fs');
 
 var date_now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
 
-const getPackageVersion = () =>
+const getPackageVersion = (p_package_folder) =>
 {
-	const json = JSON.parse(fs.readFileSync('./package.json'));
+	const package_json = (p_package_folder) ? p_package_folder + '/package.json' : 'package.json';
+	const json = JSON.parse(fs.readFileSync(package_json));
 	return json.version;
 }
+
+gulp.task('yarn_default', () => { return gulp.src(['package.json'     , 'yarn.lock'     ]).pipe(yarn()); });
+gulp.task('yarn_vendor' , () => { return gulp.src(['demo/package.json', 'demo/yarn.lock']).pipe(yarn()); });
 
 gulp.task
 (
 	'default',
+	['yarn_default'],
 	() =>
 	{
 		const version = getPackageVersion();
 
-		gulp
+		const gulp_min = gulp
 			.src('src/*.js')
 			.pipe(uglify())
 			.pipe(concat('jQuery.SimpleMask.min.js'))
@@ -30,28 +37,31 @@ gulp.task
 			.pipe(gulp.dest('dist'))
 		;
 
-		gulp
+		const gulp_raw = gulp
 			.src('src/*.js')
 			.pipe(concat('jQuery.SimpleMask.js'))
 			.pipe(edit(function(src, cb) { src = vsprintf('/* Version: %s - Last modified: %s */\n', [version, date_now]) + src; cb(null, src); }))
 			.pipe(gulp.dest('dist'))
 		;
+
+		return merge(gulp_min, gulp_raw);
 	}
 );
 
 gulp.task
 (
 	'vendor',
+	['yarn_vendor'],
 	() =>
 	{
-		const version = getPackageVersion();
+		const version = getPackageVersion('demo');
 
-		gulp
+		const js_files = gulp
 			.src
 			(
 				[
-					'node_modules/jquery/dist/jquery.min.js',
-					'node_modules/bootstrap/dist/js/bootstrap.min.js'
+					'demo/node_modules/jquery/dist/jquery.min.js',
+					'demo/node_modules/bootstrap/dist/js/bootstrap.min.js'
 				]
 			)
 			.pipe(uglify())
@@ -60,16 +70,18 @@ gulp.task
 			.pipe(gulp.dest('demo/js'))
 		;
 
-		gulp
+		const css_files = gulp
 			.src
 			(
 				[
-					'node_modules/bootstrap/dist/css/bootstrap.min.css'
+					'demo/node_modules/bootstrap/dist/css/bootstrap.min.css'
 				]
 			)
 			.pipe(concat('vendor.min.css'))
 			.pipe(edit(function(src, cb) { src = vsprintf('/* Version: %s - Last modified: %s */\n', [version, date_now]) + src; cb(null, src); }))
 			.pipe(gulp.dest('demo/css'))
 		;
+
+		return merge(js_files, css_files);
 	}
 );
