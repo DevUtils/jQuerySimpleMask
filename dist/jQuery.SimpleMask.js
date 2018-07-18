@@ -1,4 +1,4 @@
-/* Version: 1.0.4 - Last modified: 2018-07-17 10:32:36 */
+/* Version: 1.0.6 - Last modified: 2018-07-17 16:32:58 */
 String.prototype.simpleMaskStringCount = function(s1) { return (this.length - this.replace(new RegExp(s1,"g"), '').length) / s1.length; };
 
 (function($){
@@ -22,7 +22,7 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 				$.fn.simpleMask.process($(this), opts);
 			});
 		},
-		unmask : function() { return this.each(function() { $.fn.simpleMask.unmask(this); }); },
+		unmask : function() { return this.each(function() { $.fn.simpleMask.unmask(this); }); }
 	};
 
 	$.fn.simpleMask = function(methodOrOptions)
@@ -37,14 +37,14 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 		}
 		else
 		{
-			$.error('Method ' + methodOrOptions + ' does not exist on jQuery.simpleMask');
+			$.error('Method ' + methodOrOptions + ' does not exist on jQuery.SimpleMask');
 		}
 	};
 
 	$.fn.simpleMask.makeId = function()
 	{
-		var text = "";
-		var possible = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz0123456789";
+		var text = '';
+		var possible = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz0123456789';
 		var pl = possible.length;
 		for(var i = 0; i < 8; i++)
 		{
@@ -152,13 +152,13 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 
 	$.fn.simpleMask.applyMask = function(p_object, p_key)
 	{
-		var p_element = p_object.element;
+		var p_element    = p_object.element;
 		var html_element = $(p_element)[0];
-		var caret_ini = html_element.selectionStart;
-		var caret_end = html_element.selectionEnd;
-		var old_value = p_object.oldvalue;
-		var cur_value = $(p_element).val();
-		var vrTemp = $.fn.simpleMask.onlyNumbers($(p_element).val());
+		var caret_ini    = html_element.selectionStart;
+		var caret_end    = html_element.selectionEnd;
+		var old_value    = p_object.oldvalue;
+		var cur_value    = $(p_element).val();
+		var vrTemp       = $.fn.simpleMask.onlyNumbers($(p_element).val());
 
 		var p_mask = p_object.masks[0];
 		var max_mask = p_object.masks[p_object.masks.length-1].simpleMaskStringCount('#');
@@ -181,15 +181,18 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 			vrTemp = vrTemp.trim();
 			var result = p_mask;
 			var l = vrTemp.length;
+
 			for (var k = 0; k < l; k++)
 			{
 		    	result = result.replace('#', vrTemp.charAt(k));
 			}
+
 			var pos = result.indexOf('#');
 			if (pos != -1)
 			{
 				result = result.substr(0, pos);
 			}
+			
 			var ultimo = result.substr(result.length-1, 1);
 			if ($.fn.simpleMask.onlyNumbers(ultimo) === '')
 			{

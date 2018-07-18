@@ -7,6 +7,7 @@ const sprintf  = require('sprintf-js').sprintf;
 const vsprintf = require('sprintf-js').vsprintf;
 const merge    = require('merge-stream');
 const yarn     = require('gulp-yarn');
+const semver   = require('semver');
 const fs       = require('fs');
 
 var date_now = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
@@ -18,6 +19,14 @@ const getPackageVersion = (p_package_folder) =>
 	return json.version;
 }
 
+const getNextPackageVersion = (p_package_folder) =>
+{
+	const package_json = (p_package_folder) ? p_package_folder + '/package.json' : 'package.json';
+	const json = JSON.parse(fs.readFileSync(package_json));
+	const result = semver.inc(json.version, 'patch');
+	return result;
+}
+
 gulp.task('yarn_default', () => { return gulp.src(['package.json'     , 'yarn.lock'     ]).pipe(yarn()); });
 gulp.task('yarn_vendor' , () => { return gulp.src(['demo/package.json', 'demo/yarn.lock']).pipe(yarn()); });
 
@@ -27,7 +36,7 @@ gulp.task
 	['yarn_default'],
 	() =>
 	{
-		const version = getPackageVersion();
+		const version = getNextPackageVersion();
 
 		const gulp_min = gulp
 			.src('src/*.js')
@@ -54,7 +63,9 @@ gulp.task
 	['yarn_vendor'],
 	() =>
 	{
-		const version = getPackageVersion('demo');
+		const version = getNextPackageVersion('demo');
+
+		console.log(version);
 
 		const js_files = gulp
 			.src
