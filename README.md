@@ -1,7 +1,7 @@
-jQuerySimpleMask
-================
+# jQuerySimpleMask
+> Simple and fast number input masks
 
-Simple and fast number input masks
+[![npm version](https://badge.fury.io/js/jquerysimplemask.svg)](https://badge.fury.io/js/jquerysimplemask) [![](https://data.jsdelivr.com/v1/package/npm/jquerysimplemask/badge)](https://www.jsdelivr.com/package/npm/jquerysimplemask)
 
 ## Usage
 
