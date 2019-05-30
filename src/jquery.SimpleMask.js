@@ -324,7 +324,10 @@ String.prototype.simpleMaskStringCount = function(s1) { return (this.length - th
 				{
 					if ( (e.keyCode >= 65) && (e.keyCode <= 90) )
 					{
-						e.preventDefault();
+						if (!e.metaKey)
+						{
+							e.preventDefault();
+						}
 					}
 				}
 			}
