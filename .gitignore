@@ -5,3 +5,4 @@ node_modules/
 \.sublime-gulp\.cache
 /.project
 /sublime-gulp.log
+ghpage/
