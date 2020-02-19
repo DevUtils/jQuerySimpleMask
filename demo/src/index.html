@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Simple Mask - Demo</title>
+	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="css/vendor.min.css"/>
+	<script type="text/javascript" src="js/vendor.min.js"></script>
+	<script type="text/javascript" src="js/parse-markdown-pure.js"></script>
+	<script type="text/javascript" src="lib/jQuery.SimpleMask.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<style type="text/css">
+		body
+		{
+			font-family: arial,helvetica;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<h1>jQuery Simple Mask - Demo</h1>
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<form onsubmit="javascript: return false;">
+					<div class="form-group">
+						<label for="frCep">CEP</label>
+						<input type="text" class="form-control" name="frCep" id="frCep">
+					</div>
+					<div class="form-group">
+						<label for="frDtel">(DDD) Telefone</label>
+						<input type="text" class="form-control" name="frDtel" id="frDtel">
+					</div>
+					<div class="form-group">
+						<label for="frTel">Telefone</label>
+						<input type="text" class="form-control" name="frTel" id="frTel">
+					</div>
+					<div class="form-group">
+						<label for="frData">Data</label>
+						<input type="text" class="form-control" name="frData" id="frData">
+					</div>
+					<div class="form-group">
+						<label for="frCpf">CPF</label>
+						<input type="text" class="form-control" name="frCpf" id="frCpf">
+					</div>
+					<div class="form-group">
+						<label for="frCnpj">CNPJ</label>
+						<input type="text" class="form-control" name="frCnpj" id="frCnpj">
+					</div>
+					<div class="form-group">
+						<label for="frCallback">With Callback</label>
+						<input type="text" class="form-control" name="frCallback" id="frCallback">
+					</div>
+					<div class="form-group">
+						<label for="frNone">Without mask</label>
+						<input type="text" class="form-control" name="frNone" id="frNone">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div id="readme-html"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="readme" style="display: none;">
+## Helper mode
+
+```
+	$(document).ready
+	(
+		function()
+		{
+			$('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
+			$('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
+			$('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
+			$('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
+			$('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
+			$('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
+		}
+	);
+```
+
+## Custom mode
+
+```
+$(document).ready
+(
+	function()
+	{
+		$('#frCep' ).simpleMask( { 'mask': '#####-###'                          , 'nextInput': $('#frDtel') } );
+		$('#frDtel').simpleMask( { 'mask': ['(##) ####-####', '(##) #####-####'], 'nextInput': $('#frTel' ) } );
+		$('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####']          , 'nextInput': $('#frData') } );
+		$('#frData').simpleMask( { 'mask': '##/##/####'                         , 'nextInput': $('#frCpf' ) } );
+		$('#frCpf' ).simpleMask( { 'mask': '###.###.###-##'                     , 'nextInput': $('#frCnpj') } );
+		$('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
+
+		$('#frCallback').simpleMask
+		(
+			{
+				'mask'       : '#####',
+				'nextInput'  : true,
+				'onComplete' : function(element)
+				{
+					console.log('onComplete', element);
+				}
+			}
+		);
+	}
+);
+```
+	</div>
+
+</body>
+</html>
