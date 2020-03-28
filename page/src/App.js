@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/bootstrap.dark.min.css';
+import { Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <Jumbotron>
+        <h1>jQuerySimpleMask</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        Simple and fast number input masks
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p>
+          <Button href="https://github.com/DevUtils/jQuerySimpleMask/archive/master.zip" variant="primary">Download</Button>
+        </p>
+      </Jumbotron>
     </div>
   );
 }
