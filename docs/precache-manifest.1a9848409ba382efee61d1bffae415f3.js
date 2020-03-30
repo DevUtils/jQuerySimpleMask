@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c61057d909c0434bd0ed1c12ecdb150a",
+    "revision": "e5bb811ac5aa7beba1cce80ad07e1a61",
     "url": "/jQuerySimpleMask/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jQuerySimpleMask/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "8ee0998f920cc1c48948",
+    "revision": "313474a7ac831c7f3d22",
     "url": "/jQuerySimpleMask/static/css/main.e432a98c.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jQuerySimpleMask/static/js/2.82041923.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8ee0998f920cc1c48948",
-    "url": "/jQuerySimpleMask/static/js/main.b54fd894.chunk.js"
+    "revision": "313474a7ac831c7f3d22",
+    "url": "/jQuerySimpleMask/static/js/main.4994a63d.chunk.js"
   },
   {
     "revision": "5db37141af90f9a5c51c",

@@ -6,7 +6,7 @@ export default class Header extends React.Component {
   render(){
   return (
     <Jumbotron className="jumbotron">
-      <h1>jQuerySimpleMask</h1>
+      <h1>jQuery Simple Mask</h1>
       <p>
         Simple and fast number input masks
       </p>
