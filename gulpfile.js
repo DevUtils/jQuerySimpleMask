@@ -28,6 +28,7 @@ function task_default()
 		.pipe(edit(function(src, cb) { src = vsprintf('/* Version: %s - Last modified: %s */\n', [version, date_now]) + src; cb(null, src); }))
 		.pipe(gulp.dest('dist'))
 		.pipe(gulp.dest('demo/lib'))
+		.pipe(gulp.dest('page/public/lib'))
 		;
 		
 		const gulp_raw = gulp
