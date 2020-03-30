@@ -6,6 +6,47 @@ import Header from "./Components/Header";
 import Field from "./Components/Field";
 import './App.css';
 
+function getHelperModePreCode() {
+  return String.raw`$(document).ready
+(
+  function()
+  {
+    $('#frCep' ).simpleMask( { 'mask': 'cep'     , 'nextInput': true } );
+    $('#frDtel').simpleMask( { 'mask': 'ddd-tel9', 'nextInput': true } );
+    $('#frTel' ).simpleMask( { 'mask': 'tel9'    , 'nextInput': true } );
+    $('#frData').simpleMask( { 'mask': 'data'    , 'nextInput': true } );
+    $('#frCpf' ).simpleMask( { 'mask': 'cpf'     , 'nextInput': true } );
+    $('#frCnpj').simpleMask( { 'mask': 'cnpj'    , 'nextInput': true } );
+  }
+);`
+}
+
+function getCustomPreCode() {
+  return String.raw`$(document).ready
+(
+  function()
+  {
+    $('#frCep' ).simpleMask( { 'mask': '#####-###'                          , 'nextInput': $('#frDtel') } );
+    $('#frDtel').simpleMask( { 'mask': ['(##) ####-####', '(##) #####-####'], 'nextInput': $('#frTel' ) } );
+    $('#frTel' ).simpleMask( { 'mask': ['####-####', '#####-####']          , 'nextInput': $('#frData') } );
+    $('#frData').simpleMask( { 'mask': '##/##/####'                         , 'nextInput': $('#frCpf' ) } );
+    $('#frCpf' ).simpleMask( { 'mask': '###.###.###-##'                     , 'nextInput': $('#frCnpj') } );
+    $('#frCnpj').simpleMask( { 'mask': '##.###.###/####-##' } );
+
+  $('#frCallback').simpleMask
+  (
+    {
+      'mask'       : '#####',
+      'nextInput'  : true,
+      'onComplete' : function(element)
+      {
+        console.log('onComplete', element);
+      }
+    }
+  );
+);`
+}
+
 function App() {
   return (
     <div className="App">
@@ -32,6 +73,16 @@ function App() {
                 <Field controlId="frNone" caption="Without Mask"/>
               </Row>
             </Form>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h3>Helper Mode</h3>
+            <pre>{getHelperModePreCode()}</pre>
+          </Col>
+          <Col>
+            <h3>Custom Mode</h3>
+            <pre>{getCustomPreCode()}</pre>
           </Col>
         </Row>
      </Container>
