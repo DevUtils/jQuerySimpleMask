@@ -1,7 +1,7 @@
 # jQuerySimpleMask
 > Simple and fast number input masks
 
-[![npm version](https://badge.fury.io/js/jquerysimplemask.svg)](https://badge.fury.io/js/jquerysimplemask) [![](https://data.jsdelivr.com/v1/package/npm/jquerysimplemask/badge)](https://www.jsdelivr.com/package/npm/jquerysimplemask) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Requirements Status](https://requires.io/github/DevUtils/jQuerySimpleMask/requirements.svg?branch=master)](https://requires.io/github/DevUtils/jQuerySimpleMask/requirements/?branch=master)
+[![npm version](https://badge.fury.io/js/jquerysimplemask.svg)](https://badge.fury.io/js/jquerysimplemask) [![](https://data.jsdelivr.com/v1/package/npm/jquerysimplemask/badge)](https://www.jsdelivr.com/package/npm/jquerysimplemask) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## Demo
