@@ -44,8 +44,15 @@
     "sprintf-js": "^1.1.2",
     "strnow": "^1.0.1"
   },
+  "resolutions": {
+    "nth-check": ">=2.0.1",
+    "glob-parent": ">=5.1.2"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "npm-force-resolutions": "0.0.10"
+  }
 }
