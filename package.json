@@ -46,7 +46,8 @@
   },
   "resolutions": {
     "nth-check": ">=2.0.1",
-    "glob-parent": ">=5.1.2"
+    "glob-parent": ">=5.1.2",
+    "date-and-time": "^2.4.1"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
