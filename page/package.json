@@ -13,9 +13,14 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "npm-force-resolutions": "0.0.10",
     "react-scripts": "5.0.1"
   },
+  "resolutions": {
+    "nth-check": ">=2.0.1"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build && rm -rf ../docs && mv build ../docs",
     "test": "react-scripts test",
