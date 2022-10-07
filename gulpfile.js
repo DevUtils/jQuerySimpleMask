@@ -9,10 +9,9 @@ const fs       = require('fs');
 const strnow   = require('strnow');
 const date_now = strnow.get();
 
-const getNextPackageVersion = (p_package_folder) =>
+function getNextPackageVersion()
 {
-	const package_json = (p_package_folder) ? p_package_folder + '/package.json' : 'package.json';
-	const json = JSON.parse(fs.readFileSync(package_json));
+	const json = require('./package.json');
 	const result = semver.inc(json.version, 'patch');
 	return result;
 }
