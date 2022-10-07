@@ -6,3 +6,4 @@ node_modules/
 /.project
 /sublime-gulp.log
 ghpage/
+.yarn
