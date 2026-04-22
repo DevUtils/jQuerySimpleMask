@@ -202,7 +202,7 @@
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="{{ asset('media/js/jQuery.SimpleMask.js') }}"></script>
+    <script src="{{ asset('media/js/jQuery.SimpleMask.min.js') }}"></script>
     <script src="{{ asset('media/js/home.js') }}"></script>
 
 </body>
