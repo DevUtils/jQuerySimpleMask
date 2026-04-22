@@ -48,6 +48,9 @@ async function build() {
     // Copiar para www/_media/js
     fs.copyFileSync('dist/jQuery.SimpleMask.min.js', 'www/_media/js/jQuery.SimpleMask.min.js');
     console.log('✅ Copied to www/_media/js/');
+
+    fs.copyFileSync('dist/jQuery.SimpleMask.min.js', 'docs/media/js/jQuery.SimpleMask.min.js');
+    console.log('✅ Copied to docs/media/js/');
     
   } catch (error) {
     console.error('❌ Build failed:', error);

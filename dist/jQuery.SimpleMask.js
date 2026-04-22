@@ -1,4 +1,4 @@
-/* Version: 1.0.11 - Last modified: 2026-04-22 00:39:48 */
+/* Version: 1.0.11 - Last modified: 2026-04-22 01:09:10 */
 
 (() => {
   // src/jQuery.SimpleMask.js
