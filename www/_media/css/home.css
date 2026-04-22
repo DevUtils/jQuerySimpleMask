@@ -1,0 +1,443 @@
+:root {
+    --bg: #1a1b26;
+    /* um pouco mais escuro que o original */
+    --surface: #24283b;
+    /* menos cinza, mais azulado */
+    --surface-2: #1f2335;
+    /* profundidade para cards */
+    --border: rgba(255, 255, 255, 0.12);
+    /* bordas mais visíveis */
+    --accent: #bb9af7;
+    /* roxo mais vibrante */
+    --accent-pink: #f7768e;
+    /* rosa mais quente */
+    --text-primary: #c0caf5;
+    /* azulado claro, cansa menos */
+    --text-secondary: #7aa2f7;
+    /* azul médio para destaque */
+    --text-muted: #565f89;
+    /* mais claro que o original */
+    --code-bg: #16161e;
+    /* fundo de código mais escuro */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Subtle noise overlay */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 50px;
+}
+
+/* ══════════════════════════════
+    HERO
+══════════════════════════════ */
+.hero {
+    text-align: center;
+    padding: 30px 0 40px;
+    position: relative;
+}
+
+/* Purple glow behind title */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 560px;
+    height: 220px;
+    background: radial-gradient(ellipse, rgba(189, 147, 249, 0.11) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(46px, 8vw, 74px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.hero-title .word-mask {
+    color: var(--accent);
+    position: relative;
+}
+
+/* Animated underline on "Mask" */
+.hero-title .word-mask::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-pink));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: lineIn 0.55s ease 0.9s forwards;
+}
+
+.hero-sub {
+    font-size: 21px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin: 22px auto 38px;
+    max-width: 440px;
+    line-height: 1.65;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineIn {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Botão principal (Download) */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #1a1a2e;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #d0b0ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(189, 147, 249, 0.28);
+}
+
+/* Botão secundário (GitHub) */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-2);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 12px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: var(--surface);
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Grupo de botões para alinhamento */
+.btn-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ══════════════════════════════
+    SECTION LABEL
+══════════════════════════════ */
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.section-label span {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ══════════════════════════════
+    FORM CARD
+══════════════════════════════ */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    margin-bottom: 48px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+input[type="text"] {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    padding: 11px 15px;
+    outline: none;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+input[type="text"]:focus {
+    border-color: rgba(189, 147, 249, 0.45);
+    box-shadow: 0 0 0 3px rgba(189, 147, 249, 0.07);
+}
+
+.hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ══════════════════════════════
+    CODE TABS
+══════════════════════════════ */
+.tabs-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 64px;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: var(--code-bg);
+}
+
+.tab-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    padding: 14px 24px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.tab-btn:hover {
+    color: var(--text-secondary);
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--code-bg);
+}
+
+.code-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.code-dots span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.code-dots span:nth-child(1) {
+    background: #ff5f57;
+}
+
+.code-dots span:nth-child(2) {
+    background: #febc2e;
+}
+
+.code-dots span:nth-child(3) {
+    background: #28c840;
+}
+
+.code-filename {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.tab-pane pre {
+    background: var(--code-bg) !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+    padding: 24px !important;
+}
+
+/* ══════════════════════════════
+    FOOTER
+══════════════════════════════ */
+.footer {
+    text-align: center;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+}
+
+.footer p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+/* ── staggered entrance for sections ── */
+.animate-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.55s;
+}
+
+.delay-2 {
+    animation-delay: 0.68s;
+}
+
+.delay-3 {
+    animation-delay: 0.80s;
+}
+
+/* ═══════════════════════════════
+    HIGHLIGHT.JS
+══════════════════════════════ */
+.hljs {
+    background: transparent !important;
+}
